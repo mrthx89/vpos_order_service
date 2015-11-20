@@ -1,0 +1,46 @@
+<div class="phone-switcher">
+    <div class="selected" data-show="#day">
+        <div class="left"><span>Daily Sales</span></div>
+    </div>
+    <div data-show="#year">
+        <div class="right"><span>Sales By Range</span></div>
+    </div>  
+</div>
+
+<div class="layout-box lb-4" id="day">
+    <div class="hb-7">
+        <div>
+            <table class="perf-graph-navigation">
+                <tr>
+                    <td class="today"><div id="worldMap" data-map="world">World</div></td>
+                    <td class="today"><div id="usaMap" data-map="usa">USA</div></td>
+                    <td class="today"><div id="canadaMap" data-map="canada">Canada</div></td>
+                    <td class="today"><div id="europeMap" data-map="europe">Europe</div></td>
+                    <td class="today"><div id="eurasiaMap" data-map="eurasia">Eurasia</div></td>
+                    <td class="today"><div id="africaMap" data-map="africa">Africa</div></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="map-graph">
+            <div id="vectorMap">
+            </div>
+        </div>
+
+        <div class="clear-fix">
+            <div class="layout-box">
+                <div id="grid" class="grid-container hb-5">
+                </div>
+            </div>
+        </div>
+
+        <div class="hb-6 phone-hide">
+            <div class="left-arrow" id="prevYear"></div>
+            <div id="range-selector"></div>
+            <div class="right-arrow disabled" id="nextYear"></div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="scripts/geography.js"></script>
