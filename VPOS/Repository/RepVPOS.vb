@@ -3,7 +3,7 @@ Imports System.Data.SqlClient
 
 Namespace Repository
     Public Module PublicVPOS
-        Public NamaApplikasi As String = "VPOS Service"
+        Public NamaApplikasi As String = "VPOS Order Service"
 
     End Module
 
