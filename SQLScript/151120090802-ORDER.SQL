@@ -1,0 +1,30 @@
+CREATE TABLE MTable (
+NoID INT NOT NULL Primary Key,
+Kode Varchar(30) NOT NULL,
+Nama Varchar(30) NOT NULL,
+IsActive BIT NULL DEFAULT(1))
+GO
+DECLARE @i AS INT = 16;
+WHILE @i <= 10
+BEGIN
+	INSERT INTO MTable(NoID, Kode, Nama, IsActive) VALUES (
+	@i, 
+	'MEJA '+ LEFT('000', 3-LEN(CONVERT(varchar(3), @i))) + CONVERT(varchar(3), @i), 
+	'MEJA '+ LEFT('000', 3-LEN(CONVERT(varchar(3), @i))) + CONVERT(varchar(3), @i), 
+	1)
+	SET @i = @i + 1
+END
+GO
+ALTER TABLE MSO ADD IDTable INT NULL
+GO
+ALTER TABLE MSO ADD JmlPengunjung INT NULL
+GO
+CREATE VIEW vTable AS
+SELECT A.*, 
+CASE WHEN ISNULL((SELECT TOP 1 
+ISNULL(MSO.IsSelesai,0) FROM MSO (NOLOCK)
+WHERE YEAR(MSO.Tanggal)=YEAR(GETDATE()) AND MONTH(MSO.Tanggal)=MONTH(GETDATE()) AND DAY(MSO.Tanggal)=DAY(GETDATE()) AND MSO.IDTable=A.NoID 
+ORDER BY MSO.IsSelesai DESC), 1) = 0 THEN 'Isi' ELSE 'Kosong' END AS StatusTable
+FROM MTable (NOLOCK) A
+WHERE A.IsActive=1
+GO
